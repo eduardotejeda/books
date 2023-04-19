@@ -1,46 +1,47 @@
-import { useState } from "react";
-import BookCreate from "./components/BookCreate";
-import BookList from './components/BookList'
+import { useState } from 'react';
+import BookCreate from './components/BookCreate';
+import BookList from './components/BookList';
 
 function App() {
-    const [books, setBooks] = useState([]);
+  const [books, setBooks] = useState([]);
 
-    const editBookById = (id, newTitle) => {
-        const updatedBooks = books.map((book) => {
-            if (book.id === id) {
-                return {...book, title: newTitle};
-            }
-            return book;
-        });
+  const editBookById = (id, newTitle) => {
+    const updatedBooks = books.map((book) => {
+      if (book.id === id) {
+        return { ...book, title: newTitle };
+      }
 
-        setBooks(updatedBooks);
+      return book;
+    });
 
-    };
+    setBooks(updatedBooks);
+  };
 
-    const deleteBooksById = (id) => {
-        const updatedBooks = books.filter((book) => {
-            return book.id !== id;
-        });
+  const deleteBookById = (id) => {
+    const updatedBooks = books.filter((book) => {
+      return book.id !== id;
+    });
 
-        setBooks(updatedBooks);
+    setBooks(updatedBooks);
+  };
 
-    };
+  const createBook = (title) => {
+    const updatedBooks = [
+      ...books,
+      {
+        id: Math.round(Math.random() * 9999),
+        title,
+      },
+    ];
+    setBooks(updatedBooks);
+  };
 
-    const createBook = (title) => {
-        const updatedBooks = [
-            ...books, 
-            {id: Math.round(Math.random() * 9999), title}
-        ];
-        setBooks(updatedBooks);
-    };
-
-
-    return (
+  return (
     <div className="app">
-        <BookList onEdit={editBookById} books={books} onDelete={deleteBooksById}/>
-        <BookCreate onCreate={createBook}/>
+      <BookList onEdit={editBookById} books={books} onDelete={deleteBookById} />
+      <BookCreate onCreate={createBook} />
     </div>
-    );
+  );
 }
 
 export default App;
