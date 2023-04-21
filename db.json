@@ -15,5 +15,11 @@
   ],
   "profile": {
     "name": "typicode"
-  }
+  },
+  "books": [
+    {
+      "title": "Biblia",
+      "id": 2
+    }
+  ]
 }
