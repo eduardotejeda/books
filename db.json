@@ -20,6 +20,14 @@
     {
       "title": "Biblia",
       "id": 2
+    },
+    {
+      "title": "A good book",
+      "id": 3
+    },
+    {
+      "title": "Las fresas de Constanza",
+      "id": 4
     }
   ]
 }
